@@ -25,3 +25,11 @@ and this project adheres to [Semantic Versioning].
     /workers
     ...(rest of files)
 - /services : uses ts-node-dev
+  
+## [pre-dev-0.0.2] - 2024-07-06
+
+### Added
+
+- Added test cases for /services
+- Added infra for temp docker based auxillary services for testing . It will spin up container , perform tests , and take containers down after it .
+- the above thing is done with newly added compose.yaml and compose.test.sh

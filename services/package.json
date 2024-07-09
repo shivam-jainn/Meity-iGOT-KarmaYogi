@@ -4,7 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "run":"ts-node-dev --respawn --transpile-only ./src/server.ts"
+    "server": "ts-node-dev --respawn --transpile-only ./src/server.ts",
+    "test":"docker compose up -d && ./compose.test.sh"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   },
   "keywords": [],
   "author": "",
@@ -13,6 +20,10 @@
     "express": "^4.19.2"
   },
   "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.14.10",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.5.3"
   }
