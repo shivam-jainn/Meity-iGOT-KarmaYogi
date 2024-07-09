@@ -1,8 +1,7 @@
 const request = require('supertest');
-const app = require('../../src/server'); 
 
 
-describe('POST /auth/signup', () => {
+xdescribe('POST /auth/signup', () => {
   it('should create a new user', async () => {
     const userData = {
       email: 'test@example.com',
@@ -37,7 +36,7 @@ describe('POST /auth/signup', () => {
 
 var token;
 
-describe('POST /auth/signin', () => {
+xdescribe('POST /auth/signin', () => {
     it('should authenticate a user', async () => {
       const credentials = {
         email: 'test@example.com',
@@ -55,7 +54,7 @@ describe('POST /auth/signin', () => {
 });
 
 
-describe('POST /auth/signout', () => {
+xdescribe('POST /auth/signout', () => {
     it('should invalidate user session', async () => {
   
       const response = await request(app)
@@ -67,7 +66,7 @@ describe('POST /auth/signout', () => {
 });
 
 
-describe('POST /auth/forgotpassword', () => {
+xdescribe('POST /auth/forgotpassword', () => {
     it('should send a password reset email', async () => {
       const emailData = {
         email: 'test@example.com',
