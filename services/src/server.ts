@@ -1,9 +1,13 @@
 import express from 'express';
+// import { producerRouter } from './routes/producer.routes';
 
 const app = express();
 
-app.get('/', (req, res) => {
-  res.send('Hello from TypeScript Express server!');
+app.use(express.json()); 
+// app.use('/produce', producerRouter);
+
+app.get('/health', (req, res) => {
+  res.json('healthy');
 });
 
 const port = process.env.PORT || 3000;
