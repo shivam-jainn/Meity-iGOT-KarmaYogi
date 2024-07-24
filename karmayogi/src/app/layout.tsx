@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import {Provider} from 'jotai';
 const inter = Inter({ subsets: ["latin"] });
+import Navbar from "@/components/atoms/Navbar/Navbar";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,6 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Provider>
+          <Navbar />
           {children}
         </Provider>
         </body>

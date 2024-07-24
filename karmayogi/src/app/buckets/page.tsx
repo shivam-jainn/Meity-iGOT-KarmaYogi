@@ -101,7 +101,7 @@ export default function Page() {
     }, []);
 
     return (
-        <section className='flex h-screen'>
+        <section className='flex min-h-screen'>
             <div className='w-1/6 border-r-[1px] border-gray-400/80'>
                 {buckets.map((bucket: string, index: number) => (
                     <div key={index} 
