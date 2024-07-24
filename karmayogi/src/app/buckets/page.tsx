@@ -112,8 +112,8 @@ export default function Page() {
                     </div>
                 ))}
             </div>
-            <div className='w-5/6 p-4 flex flex-col'>
-            <div className='flex justify-between items-center  px-4 border-b-[1px] border-gray-200/80 p-4'>
+            <div className='w-5/6 flex flex-col'>
+            <div className='flex justify-between items-center  px-4 shadow-sm shadow-gray-300 p-4'>
                     <h1 className='text-2xl font-bold'>Chat with your database</h1>
                     {
                             response &&
@@ -144,7 +144,7 @@ export default function Page() {
                         }
 
             </div>
-                <div className='flex-grow overflow-auto mt-4'>
+                <div className='flex-grow overflow-auto mt-4 px-2 scrollbar'>
                     {response ? 
                         <SQLTable responseData={response} />
                         :
@@ -153,7 +153,7 @@ export default function Page() {
                         </div>
                     }
                 </div>
-                <form onSubmit={handleSubmit} className='mt-4'>
+                <form onSubmit={handleSubmit} className='my-4 mx-4'>
                     <div className='relative'>
                         <input
                             type="text"
