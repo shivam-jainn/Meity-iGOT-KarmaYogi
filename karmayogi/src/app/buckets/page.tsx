@@ -102,20 +102,48 @@ export default function Page() {
 
     return (
         <section className='flex h-screen'>
-            <div className='w-1/5'>
-                <div className='text-white bg-black py-6 px-4 flex gap-2 items-center font-medium hover:bg-white/80 hover:text-black cursor-pointer'>
-                    Saved Buckets
-                </div>
+            <div className='w-1/6 border-r-[1px] border-gray-400/80'>
                 {buckets.map((bucket: string, index: number) => (
                     <div key={index} 
-                        className='py-6 px-4 flex gap-2 items-center hover:bg-gray-100 hover:text-black cursor-pointer'
+                        className='border-b-[1px] border-gray-200/60 py-6 px-4 flex gap-2 items-center hover:bg-gray-100 hover:text-black cursor-pointer'
                         onClick={() => showViewBucket(bucket)}
                         >
                         {bucket}
                     </div>
                 ))}
             </div>
-            <div className='w-4/5 p-4 flex flex-col'>
+            <div className='w-5/6 p-4 flex flex-col'>
+            <div className='flex justify-between items-center  px-4 border-b-[1px] border-gray-200/80 p-4'>
+                    <h1 className='text-2xl font-bold'>Chat with your database</h1>
+                    {
+                            response &&
+                            <Dialog>
+                                <DialogTrigger>
+                                    <Button className=' '>Save Bucket</Button>
+                                </DialogTrigger>
+                                <DialogContent>
+                                    <DialogHeader>
+                                        <DialogTitle>Do you want to save this table?</DialogTitle>
+                                        <DialogDescription>
+                                            <Input
+                                                type='text'
+                                                placeholder='Enter your bucket name'
+                                                value={bucketName}
+                                                onChange={(e) => setBucketName(e.target.value)}
+                                            />
+                                            <Button
+                                                className='mt-2'
+                                                onClick={handleSaveBucket}
+                                            >
+                                                Save
+                                            </Button>
+                                        </DialogDescription>
+                                    </DialogHeader>
+                                </DialogContent>
+                            </Dialog>
+                        }
+
+            </div>
                 <div className='flex-grow overflow-auto mt-4'>
                     {response ? 
                         <SQLTable responseData={response} />
@@ -142,33 +170,7 @@ export default function Page() {
                         >
                             <ChevronUp />
                         </Button>
-                        {
-                            response &&
-                            <Dialog>
-                                <DialogTrigger>
-                                    <Button className='mt-4'>Save Bucket</Button>
-                                </DialogTrigger>
-                                <DialogContent>
-                                    <DialogHeader>
-                                        <DialogTitle>Do you want to save this table?</DialogTitle>
-                                        <DialogDescription>
-                                            <Input
-                                                type='text'
-                                                placeholder='Enter your bucket name'
-                                                value={bucketName}
-                                                onChange={(e) => setBucketName(e.target.value)}
-                                            />
-                                            <Button
-                                                className='mt-2'
-                                                onClick={handleSaveBucket}
-                                            >
-                                                Save
-                                            </Button>
-                                        </DialogDescription>
-                                    </DialogHeader>
-                                </DialogContent>
-                            </Dialog>
-                        }
+                       
                     </div>
                 </form>
             </div>
