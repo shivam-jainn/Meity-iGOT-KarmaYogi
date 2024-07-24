@@ -17,7 +17,7 @@ import { Input } from "@/components/ui/input";
 
 export default function Page() {
     const [inputValue, setInputValue] = useState('');
-    const [response, setResponse] = useState(null);
+    const [response, setResponse] = useState<null|any>(null);
     const [error, setError] = useState(false);
     const [bucketName, setBucketName] = useState('');
     const [query, setQuery] = useState('');
@@ -74,13 +74,17 @@ export default function Page() {
                 },
             });
 
+
             if (!res.ok) {
                 throw new Error('An error occurred while processing your request.');
             }
 
             const data = await res.json();
+            const respdata = {
+                result : data
+            } 
+            setResponse(respdata);
 
-            setResponse(data);
         } catch (error) {
             console.log('An error occurred while processing your request.');
             
