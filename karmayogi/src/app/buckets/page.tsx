@@ -124,7 +124,7 @@ export default function Page() {
                                 <DialogContent>
                                     <DialogHeader>
                                         <DialogTitle>Do you want to save this table?</DialogTitle>
-                                        <DialogDescription>
+                                        <DialogDescription className='flex flex-col'>
                                             <Input
                                                 type='text'
                                                 placeholder='Enter your bucket name'
