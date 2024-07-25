@@ -15,13 +15,13 @@ export default function Navbar() {
   ]
 
   return (
-    <div className='flex p-4 shadow-sm justify-between items-center'>
+    <div className='flex bg-black text-white p-4 shadow-sm justify-between items-center'>
       <div>Karmayogi</div>
 
       <div className='flex gap-2'>
         {sections.map((section, index) => (
           <Link key={index} href={`${section.link}`}>
-            <Button variant='link'>
+            <Button className='text-white' variant='link'>
               {section.name}
             </Button>
           </Link>
