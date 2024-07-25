@@ -4,6 +4,7 @@ import "./globals.css";
 import {Provider} from 'jotai';
 const inter = Inter({ subsets: ["latin"] });
 import Navbar from "@/components/atoms/Navbar/Navbar";
+import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
@@ -20,6 +21,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Provider>
           <Navbar />
+          <Toaster />
           {children}
         </Provider>
         </body>

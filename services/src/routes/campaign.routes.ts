@@ -54,6 +54,19 @@ campaignRouter.get('/subcampaigns/:campaignID', async (req: Request, res: Respon
 campaignRouter.post('/create', async (req: Request, res: Response) => {
   try {
     const { campaignName } = req.body;
+    if(campaignName==null || campaignName==""){
+      return res.status(400).json({ error: 'Campaign name cannot be empty' });
+    }
+
+    const existingCampaign = await prisma.campaign.findFirst({
+      where:{
+        campaignName:campaignName
+      }
+    });  
+
+    if(existingCampaign){
+      return res.status(400).json({ error: 'Campaign name already exists' });
+    }
 
     const newCampaign = await prisma.campaign.create({
       data: {
