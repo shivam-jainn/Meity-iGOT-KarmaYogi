@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import CampCard from '@/components/atoms/Campaigns/CampCard/CampCard';
 import CampSlider from '@/components/atoms/Campaigns/CampSlider/CampSlider';
-import { CampaignData, campCardChildAtom } from '@/states/campcard.atom';
+import { CampaignData, campCardAtom, campCardChildAtom } from '@/states/campcard.atom';
 import { useAtomValue, useSetAtom } from 'jotai';
 import { Button } from '@/components/ui/button';
 import { useSearchParams, useRouter } from 'next/navigation';
@@ -103,16 +103,19 @@ export default function Page({ params }: { params: { slug: string } }) {
             <CampaignSection 
               title='Whatsapp' 
               campaigns={whatsappCampaigns} 
+              campaignId={campCardParentData.id}
               onAddClick={() => router.push(`?create=whatsapp`)} 
             />
             <CampaignSection 
               title='Email' 
               campaigns={emailCampaigns} 
+              campaignId={campCardParentData.id}
               onAddClick={() => router.push(`?create=email`)} 
             />
             <CampaignSection 
               title='SMS' 
               campaigns={smsCampaigns} 
+              campaignId={campCardParentData.id}
               onAddClick={() => router.push(`?create=sms`)} 
             />
           </div>
@@ -122,9 +125,10 @@ export default function Page({ params }: { params: { slug: string } }) {
   );
 }
 
-const CampaignSection = ({ title, campaigns, onAddClick }:{
+const CampaignSection = ({ title, campaigns, campaignId,onAddClick }:{
   title:any;
   campaigns:any;
+  campaignId:string;
   onAddClick:any;
 }) => (
   <>
@@ -134,6 +138,6 @@ const CampaignSection = ({ title, campaigns, onAddClick }:{
         Add +
       </Button>
     </div>
-    <CampSlider campaignCards={campaigns} campaignType={title.toUpperCase()} />
+    <CampSlider campaignCards={campaigns} campaignType={title.toUpperCase()} campaignId={campaignId} />
   </>
 );
