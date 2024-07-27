@@ -10,9 +10,9 @@ import WhatsappCampaignCreate from '@/forms/Whatsapp/WhatsappCampaignCreate';
 import EmailCampaignCreate from '@/forms/Email/EmailCampaignCreate';
 import SMSCampaignCreate from '@/forms/SMS/SMSCampaignCreate';
 
-export default function Page() {
-  const params = useSearchParams();
-  const create = params.get('create');
+export default function Page({ params }: { params: { slug: string } }) {
+  const searchParams = useSearchParams();
+  const create = searchParams.get('create');
   const setCampCardChild = useSetAtom(campCardChildAtom);
   const [campCardParentData, setCampCardParentData] = useState<CampaignData | null>(null);
   const [whatsappCampaigns, setWhatsappCampaigns] = useState([]);
@@ -71,11 +71,11 @@ export default function Page() {
 
   const renderCreateForm = () => {
     if (create === 'whatsapp') {
-      return <WhatsappCampaignCreate />;
+      return <WhatsappCampaignCreate campaignId={campCardParentData.id}/>;
     } else if (create === 'email') {
-      return <EmailCampaignCreate />;
+      return <EmailCampaignCreate campaignId={campCardParentData.id} />;
     } else if (create === 'sms') {
-      return <SMSCampaignCreate />;
+      return <SMSCampaignCreate campaignId={campCardParentData.id} />;
     }
     return null;
   };
