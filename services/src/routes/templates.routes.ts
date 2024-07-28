@@ -64,11 +64,23 @@ templateRouter.get('/list/sms', async (req: Request, res: Response) => {
 templateRouter.post('/upload/nocode'
   ,async (req: Request, res: Response) => {
   try {
-    const {json} = req.body;
-    const templateName = `${Date.now()}.json`;
-    const result = await uploadFile(Buffer.from(json), templateName, process.env.AWS_TEMP_BUCKET as string);
-    console.log(result);
-    return res.json({json:json});
+    const {plainJSON,templateName} = req.body;
+    const templateName_final = `${templateName}.json`;
+    const savedTemplate = await prisma.template.create({
+        data:{
+            name: templateName,
+            type: {
+                set: ["EMAIL"]
+            },
+            noCode: true,
+            body:"This is nocode email template",
+            createdAt: new Date(),
+            updatedAt: new Date()
+        }
+    });
+
+    const result = await uploadFile(Buffer.from(plainJSON), templateName_final, process.env.AWS_TEMP_BUCKET as string);
+    return res.json({result:result});
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'An error occurred while uploading template' });
@@ -83,6 +95,24 @@ templateRouter.get('/download/nocode/:templateName', async (req: Request, res: R
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'An error occurred while downloading template' });
+  }
+});
+
+templateRouter.get('/list/nocode', async (req: Request, res: Response) => {
+  try {
+    const templates = await prisma.template.findMany({
+        where:{
+           type:{
+             has:"EMAIL"
+           },
+           noCode: true
+        }
+    });
+
+    return res.json(templates);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred while fetching templates' });
   }
 });
 
