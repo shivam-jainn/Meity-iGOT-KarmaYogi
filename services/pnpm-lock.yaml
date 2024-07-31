@@ -13,10 +13,10 @@ importers:
         version: 3.620.0
       '@lucia-auth/adapter-prisma':
         specifier: ^4.0.1
-        version: 4.0.1(@prisma/client@5.16.2(prisma@5.16.2))(lucia@3.2.0)
+        version: 4.0.1(@prisma/client@5.17.0(prisma@5.16.2))(lucia@3.2.0)
       '@prisma/client':
-        specifier: 5.16.2
-        version: 5.16.2(prisma@5.16.2)
+        specifier: '5.17'
+        version: 5.17.0(prisma@5.16.2)
       '@types/multer':
         specifier: ^1.4.11
         version: 1.4.11
@@ -771,8 +771,8 @@ packages:
     resolution: {integrity: sha512-u2OlIxW264bFUfvbFqDz9HZKFjwe8FHFtn7T/U8mYjPZ7DWYpbUB+/dkW/QgYfMSfR0ejkyuWaBBe0coW7/7ig==}
     engines: {node: '>= 10'}
 
-  '@prisma/client@5.16.2':
-    resolution: {integrity: sha512-+1lmkhR9gHWcTC5oghm2ZKpWljyWdzfazCVlLKUWXVmwHSf52g81aZ8qb6Km5Bs025yBi7puLp3qSLEvktoUtw==}
+  '@prisma/client@5.17.0':
+    resolution: {integrity: sha512-N2tnyKayT0Zf7mHjwEyE8iG7FwTmXDHFZ1GnNhQp0pJUObsuel4ZZ1XwfuAYkq5mRIiC/Kot0kt0tGCfLJ70Jw==}
     engines: {node: '>=16.13'}
     peerDependencies:
       prisma: '*'
@@ -3635,9 +3635,9 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  '@lucia-auth/adapter-prisma@4.0.1(@prisma/client@5.16.2(prisma@5.16.2))(lucia@3.2.0)':
+  '@lucia-auth/adapter-prisma@4.0.1(@prisma/client@5.17.0(prisma@5.16.2))(lucia@3.2.0)':
     dependencies:
-      '@prisma/client': 5.16.2(prisma@5.16.2)
+      '@prisma/client': 5.17.0(prisma@5.16.2)
       lucia: 3.2.0
 
   '@msgpackr-extract/msgpackr-extract-darwin-arm64@3.0.3':
@@ -3786,7 +3786,7 @@ snapshots:
       '@node-rs/bcrypt-win32-ia32-msvc': 1.9.0
       '@node-rs/bcrypt-win32-x64-msvc': 1.9.0
 
-  '@prisma/client@5.16.2(prisma@5.16.2)':
+  '@prisma/client@5.17.0(prisma@5.16.2)':
     optionalDependencies:
       prisma: 5.16.2
 
