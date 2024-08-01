@@ -141,3 +141,20 @@ model Template {
   updatedAt DateTime
   noCode    Boolean        @default(false)
 }
+
+enum QueueStatus {
+  PENDING
+  QUEUED
+}
+
+model Scheduled{
+  id        String         @id @default(cuid())
+  subCampaignID String
+  type     CampaignType[]
+  scheduled DateTime
+  timeToBeSent String
+  status    CampaignStatus
+  createdAt DateTime
+  updatedAt DateTime
+  queueStats QueueStatus
+}

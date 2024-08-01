@@ -132,6 +132,7 @@ export default function SMSCreateCampaign({
       }
 
       const result = await response.json();
+
       if (result) {
         const { pathname } = window.location;
         router.push(pathname);

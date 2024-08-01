@@ -9,7 +9,7 @@ import pixelRouter from "./routes/pixel.routes";
 import statsRouter from "./routes/stats.routes";
 import campaignRouter from "./routes/campaign.routes";
 import templateRouter from "./routes/templates.routes";
-
+import scheduleRouter from "./routes/schedule.routes";
 const app = express();
 
 app.use(express.json());
@@ -40,6 +40,8 @@ app.use("/pixels", pixelRouter);
 app.use("/stats", statsRouter);
 app.use("/campaigns", campaignRouter);
 app.use("/templates", templateRouter);
+// app.use("/schedule", scheduleRouter);
+
 app.get("/health", (req, res) => {
   res.json("healthy");
 });
